@@ -1,9 +1,8 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Get locale from request
 """
 
-import babel
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
@@ -24,13 +23,23 @@ babel = Babel(app)
 def get_locale() -> str:
     """
     Determines the best match with our supported languages.
+    This function uses Flask's request object to access the client's preferred
+    languages and the app's supported languages (defined in the Config class)
+    to determine the best match. The best match is then returned as the locale.
+
+    Returns:
+        str: The locale code for the best match (e.g. "en", "fr").
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
-    """ Hello World"""
+    """
+    The index function displays the home page of the web application.
+    Returns:
+        str: contents of the home page.
+    """
     return render_template('2-index.html')
 
 
