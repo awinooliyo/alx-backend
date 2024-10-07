@@ -3,6 +3,7 @@
 
 from base_caching import BaseCaching
 
+
 class LFUCache(BaseCaching):
     """ LFUCache class that implements a LFU caching system.
         If multiple keys have the same frequency, use the LRU algorithm.
@@ -11,7 +12,7 @@ class LFUCache(BaseCaching):
     def __init__(self):
         """ Initialize class instance. """
         super().__init__()
-        self.freq = {} 
+        self.freq = {}
         self.lru_order = {}
 
     def put(self, key, item):
