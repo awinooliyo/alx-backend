@@ -11,8 +11,8 @@ class LFUCache(BaseCaching):
     def __init__(self):
         """ Initialize class instance. """
         super().__init__()
-        self.freq = {}  
-        self.lru_order = {} 
+        self.freq = {} 
+        self.lru_order = {}
 
     def put(self, key, item):
         """ Add an item in the cache using LFU algorithm """
@@ -63,5 +63,5 @@ class LFUCache(BaseCaching):
         if len(min_freq_keys) == 1:
             return min_freq_keys[0]
 
-        # Select the least recently used key among the least frequently used ones
+        # Select the least recently used key among the least frequently used
         return min(min_freq_keys, key=lambda k: self.lru_order[k])
